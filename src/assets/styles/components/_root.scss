@@ -1,0 +1,12 @@
+/* Document level adjustments */
+html {
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  html { font-size: 14px; }
+}
+
+@media (max-width: 400px) {
+  html { font-size: 12px; }
+}

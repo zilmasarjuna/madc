@@ -1,0 +1,62 @@
+.container-login {
+  background: #F0F2F5;
+  height: 100vh;
+  min-height: 100%;
+  display: flex;
+
+  @media screen and (max-width: 500px){
+    padding: 30px;
+  }
+
+  .card-login {
+    margin: auto;
+    width: 393px;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-family: 'Roboto-Regular';
+      font-weight: 500;
+      color: #262626;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .ant-form-item {
+      margin-bottom: 10px;
+    }
+
+    .ant-form-item-with-help {
+      margin-bottom: 0;
+    }
+
+    .ant-card-body {
+      padding: 48px 41px;
+
+      @media screen and (max-width: 500px) {
+        padding: 30px 30px;
+      }
+    }
+
+    .ant-form-item-label {
+      padding: 0;
+
+      label {
+        color: #262626;
+        font-family: 'Roboto-Regular';
+        font-size: 1rem;
+      }
+    }
+
+    .input-login {
+      border-radius: 4px;
+      font-family: 'Roboto-Regular';
+      padding: 8px 12px;
+      font-size:  1.14286rem;
+    }
+  }
+}
+
