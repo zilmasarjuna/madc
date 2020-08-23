@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { fetchLogin } from 'store/actions/Auth'
 
 import { 
   Card, Input, Button,
@@ -20,7 +23,7 @@ const buttonLayout = {
   }
 }
 
-const Login = () => (
+const Login = ({ fetchLogin, history }) => (
   <div className="container-login">
     <div className="card-login">
       <Card bordered={false} style={{ boxShadow: '0px 22px 106px rgba(0, 0, 0, 0.07)' }}>
@@ -28,7 +31,10 @@ const Login = () => (
         <Form
           {...layout}
           name='basic'
-          onFinish={(val) => console.log('finis', val)}
+          onFinish={(val) => {
+            fetchLogin(val)
+            // history.push('/register')
+          }}
         >
           <Form.Item
             label="Username"
@@ -76,4 +82,7 @@ const Login = () => (
   </div>
 )
 
-export default Login
+export default connect(
+  null,
+  { fetchLogin }
+)(Login)

@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
+
+import history from 'utils/history'
 
 import Login from 'containers/Login'
 import Register from 'containers/Register'
@@ -9,7 +11,7 @@ import PrivateComponent from 'containers/Layout/ProtectedRoute'
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         <React.Suspense fallback="Loading">
           <Switch>
             <Route exact path="/login" component={Login} />

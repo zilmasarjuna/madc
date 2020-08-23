@@ -1,3 +1,5 @@
-import Register from './Register'
+import * as React from 'react'
 
-export default Register
+const LazyRegister = React.lazy(() => import('./Register'))
+
+export default LazyRegister

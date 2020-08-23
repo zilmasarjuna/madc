@@ -2,8 +2,7 @@ import *  as React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 
-const PrivateComponent = ({ bntp, component: Component, ...rest }, props) => {
-  console.log('props',bntp)
+const PrivateComponent = ({ bntp, component: Component, ...rest }) => {
   return (
     <Route 
       {...rest}
