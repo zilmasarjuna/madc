@@ -1,5 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const Register = () => <h4>Register</h4>
+import { clearCurrentUser } from 'store/actions/Auth'
 
-export default Register
+const Register = ({ clearCurrentUser }) => (
+  <>
+    <h4>Register</h4>
+    <button onClick={() => clearCurrentUser()}>Keluar</button>
+  </>
+)
+
+export default connect(
+  null,
+  { clearCurrentUser }
+)(Register)

@@ -2,6 +2,7 @@ import {
   AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_SUCCESS,
   AUTHENTICATE_USER_FAILURE,
+  AUTHENTICATE_USER_LOGOUT
 } from 'store/types'
 
 const initialState = {
@@ -33,6 +34,8 @@ export default function auth(state = initialState, action) {
         isAuth: false,
         message: action.error,
       }
+    case AUTHENTICATE_USER_LOGOUT:
+      return initialState
     default:
       return state
   }

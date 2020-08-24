@@ -1,6 +1,9 @@
 import axios from 'utils/API'
 import Cookies from 'js-cookie'
 import config from 'config'
+import { purgeStoredState } from 'redux-persist'
+
+import { mainPersistConfig } from 'store/configStore'
 
 import {
   AUTHENTICATE_USER_FAILURE,
@@ -27,6 +30,15 @@ export const authenticateUserLogout = () => ({
   type: AUTHENTICATE_USER_LOGOUT,
 })
 
+
+export const getAccessToken = () => (
+  Cookies.get(config.store_app)
+)
+
+const removeToken = () => {
+  Cookies.remove(config.store_app)
+}
+
 export const loginUser = token => (
   (dispatch) => {
     dispatch(authenticateUserSuccess(token))
@@ -49,4 +61,18 @@ export const fetchLogin = (params) => {
     })
   }
 }
+
+export   const clearCurrentUser = () => (
+  (dispatch) => {
+    console.log('jalan')
+    purgeStoredState(mainPersistConfig).then(() => {
+      removeToken()
+      let clear = new Promise((resolve) => {
+        dispatch(authenticateUserLogout())
+        resolve('done')
+      })
+      clear.then(() => console.log('jalan'))
+    })
+  }
+)
 

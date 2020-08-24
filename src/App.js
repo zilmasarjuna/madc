@@ -1,23 +1,25 @@
 import React from 'react';
-import { Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import history from 'utils/history'
 
 import Login from 'containers/Login'
 import Register from 'containers/Register'
+import Dashboard from 'containers/Dashboard'
 
 import PrivateComponent from 'containers/Layout/ProtectedRoute'
+import PublicComponent from 'containers/Layout/PublicRoute'
 
 function App() {
   return (
     <div className="App">
-      <Router history={history}>
+      <Router>
         <React.Suspense fallback="Loading">
           <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
+            <PublicComponent exact path="/login" component={Login} />
+            <PublicComponent exact path="/register" component={Register} />
 
-            <PrivateComponent exact path="/dashboard" component={Register} />
+            <PrivateComponent exact path="/dashboard" component={Dashboard} />
           </Switch>
          </React.Suspense>
       </Router>

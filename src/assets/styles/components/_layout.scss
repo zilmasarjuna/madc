@@ -1,0 +1,38 @@
+.logo {
+  background: #eee;
+  margin: 16px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.header-admin {
+  background: #fff;
+  padding: 10px 30px;
+
+  .profile-section {
+    float: right;
+  }
+}
+
+.ant-layout-sider {
+  box-shadow: 12px 0 15px -4px rgba(191, 191, 191, 0.2);
+
+  span {
+    font-family: 'Roboto-Regular';
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3c3c3c;
+    text-align: center;
+  }
+}
+
+.ant-menu-item {
+  font-weight: 500;
+}
+
+.ant-layout-content {
+  .body {
+    padding: 20px 30px;
+  }
+}
