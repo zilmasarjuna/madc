@@ -16,13 +16,14 @@
 }
 
 .ant-layout-sider {
-  box-shadow: 12px 0 15px -4px rgba(191, 191, 191, 0.2);
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);;
 
-  span {
-    font-family: 'Roboto-Regular';
+  span, a {
+    font-family: 'Poppins-Medium';
     font-size: 1rem;
-    font-weight: 700;
-    color: #3c3c3c;
+    font-weight: 500;
+    color: #334D6E;
+    letter-spacing: 0.01em;
     text-align: center;
   }
 }
@@ -33,6 +34,6 @@
 
 .ant-layout-content {
   .body {
-    padding: 20px 30px;
+    padding: 36px 30px;
   }
 }

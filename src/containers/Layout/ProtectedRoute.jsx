@@ -1,9 +1,15 @@
-import *  as React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
-const PrivateComponent = ({ bntp, component: Component, ...rest }) => {
-  if (!bntp.auth.isAuth) {
+import { changeMenu } from 'store/actions/Config'
+
+const PrivateComponent = ({ auth, changeMenu, component: Component, ...rest }) => {
+  useEffect(() => {
+    changeMenu(rest.menu)
+  })
+  
+  if (!auth.isAuth) {
     return (
       <Redirect 
         to={{
@@ -11,7 +17,7 @@ const PrivateComponent = ({ bntp, component: Component, ...rest }) => {
         }}
       />
     )
-  }
+  } 
 
   return (
     <Route 
@@ -25,6 +31,6 @@ const PrivateComponent = ({ bntp, component: Component, ...rest }) => {
 }
 
 export default connect(
-  ({bntp}) => ({bntp}),
-  null
+  ({ bntp: { auth } }) => ({ auth }),
+  { changeMenu }
 )(PrivateComponent)

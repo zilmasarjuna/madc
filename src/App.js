@@ -6,6 +6,7 @@ import history from 'utils/history'
 import Login from 'containers/Login'
 import Register from 'containers/Register'
 import Dashboard from 'containers/Dashboard'
+import JudgementList from 'containers/Judgement/List'
 
 import PrivateComponent from 'containers/Layout/ProtectedRoute'
 import PublicComponent from 'containers/Layout/PublicRoute'
@@ -19,7 +20,8 @@ function App() {
             <PublicComponent exact path="/login" component={Login} />
             <PublicComponent exact path="/register" component={Register} />
 
-            <PrivateComponent exact path="/dashboard" component={Dashboard} />
+            <PrivateComponent exact path="/dashboard" component={Dashboard} menu="dashboard" />
+            <PrivateComponent exact path="/judgement" component={JudgementList} menu="judgement" />
           </Switch>
          </React.Suspense>
       </Router>

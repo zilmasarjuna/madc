@@ -1,6 +1,6 @@
 .content-first {
   h5 {
-    font-family: 'Roboto-Regular';
+    font-family: 'Poppins-Regular';
     font-size: 1rem;
     font-weight: 700;
     color: #3c3c3c;
@@ -9,5 +9,14 @@
 
   .ant-card-body {
     padding: 15px 20px;
+
+    .dashboard-number {
+      font-family: 'Poppins-Regular';
+      font-weight: 500;
+      color: #2ED47A;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 0;
+    }
   }
 }

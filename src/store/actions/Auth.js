@@ -64,7 +64,6 @@ export const fetchLogin = (params) => {
 
 export   const clearCurrentUser = () => (
   (dispatch) => {
-    console.log('jalan')
     purgeStoredState(mainPersistConfig).then(() => {
       removeToken()
       let clear = new Promise((resolve) => {
