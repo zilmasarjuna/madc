@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Row, Col, Card } from 'antd'
 
 import { LayoutWrapper } from 'components'

@@ -1,14 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Card } from 'antd'
 
 import { LayoutWrapper } from 'components'
+
 
 const columns = [
   {
     title: 'Kode',
     dataIndex: 'kode',
     key: 'kode',
-    render: text => <b>{text}</b>,
+    render: text => <Link to={`/judgement/${text}`}><b>{text}</b></Link>,
   },
   {
     title: 'Judul',
