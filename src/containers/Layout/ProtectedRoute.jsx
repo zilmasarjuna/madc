@@ -13,7 +13,7 @@ const PrivateComponent = ({ auth, changeMenu, component: Component, ...rest }) =
     return (
       <Redirect 
         to={{
-          pathname: '/login'
+          pathname: '/'
         }}
       />
     )

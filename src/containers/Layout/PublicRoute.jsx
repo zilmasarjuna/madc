@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
 const PublicComponent = ({ bntp, component: Component, ...rest }) => {
+  console.log('ajalan')
   if (bntp.auth.isAuth) {
     return (
       <Redirect 

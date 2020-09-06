@@ -19,11 +19,13 @@ export default function auth(state = initialState, action) {
         ...state,
         loading: true,
         message: null,
+        data: {}
       }
     case AUTHENTICATE_USER_SUCCESS:
       return {
         ...state,
         loading: false,
+        data: action.data,
         isAuth: true,
         message: null,
       }
@@ -33,6 +35,7 @@ export default function auth(state = initialState, action) {
         loading: false,
         isAuth: false,
         message: action.error,
+        data: {}
       }
     case AUTHENTICATE_USER_LOGOUT:
       return initialState
