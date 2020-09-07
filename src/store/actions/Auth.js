@@ -70,11 +70,14 @@ export const registerUser = params => (
           dispatch(requestPostFailure())
           resolve({
             status: false,
-            message: response.data.meta.messages[0],
+            message: response.data.meta.message,
           })
         }
       }).catch((e) => {
-        reject(e)
+        reject({
+          status: false,
+          message: e.response.data.meta.message
+        })
       })
     })
 

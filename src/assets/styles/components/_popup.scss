@@ -1,0 +1,35 @@
+.popup-info {
+  .swal2-popup {
+    width: 300px!important;
+    padding: 20px 0 30px;
+  }
+  .modal-error-title{
+    font-family: 'Poppins-Regular';
+    color: #F7685B;
+    font-family: 1.6rem;
+  }
+  .modal-info {
+    font-family: 'Poppins-Medium';
+    color: #323C47;
+    font-weight: 500;
+    letter-spacing: 0.01rem;
+  }
+}
+
+.popup-info-error {
+  .swal2-confirm {
+    background: #F7685B;
+    padding: 5px 40px;
+    border-radius: 90px;
+    font-family: 'Poppins-Medium';
+    font-weight: 500;
+    letter-spacing: 0.01rem;
+    font-size: 1.2rem;
+
+    &:focus {
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}

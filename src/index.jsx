@@ -8,7 +8,9 @@ import * as serviceWorker from './serviceWorker'
 import configStore from './store/configStore'
 
 import 'antd/dist/antd.css'
+import 'sweetalert2/src/sweetalert2.scss'
 import './assets/styles/index.scss'
+
 
 
 const { persistor, store } = configStore()

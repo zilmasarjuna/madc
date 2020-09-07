@@ -7,6 +7,8 @@ import {
   Form, Row, Col
 } from 'antd'
 
+import Swal from 'sweetalert2/dist/sweetalert2'
+
 import { RenderAnimation } from 'components'
 
 import { registerUser } from 'store/actions/Auth'
@@ -47,7 +49,15 @@ const Register = ({ registerUser }) => {
                 registerUser(params).then(res => {
                   console.log('res', res)
                 }).catch(err => {
-                  console.log('res', err)
+                  Swal.fire({
+                    title: '<div class="modal-error-title">Oppss..</div>',
+                    html: `<div class="modal-info">${err.message}</div>`,
+                    confirmButtonText: 'Oke',
+                    customClass: {
+                      container: 'popup-info popup-info-error'
+                    },
+                    width: '400px'
+                  })
                 })
               }}
             >
