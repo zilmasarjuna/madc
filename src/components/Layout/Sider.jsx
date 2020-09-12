@@ -20,7 +20,7 @@ const SiderMenu = ({ config }) => (
           Dashboard
         </Link>  
       </Menu.Item>
-      <Menu.Item key="2" icon={<UploadOutlined />}>
+      <Menu.Item key="profile" icon={<UploadOutlined />}>
         Profil Penerbit
       </Menu.Item>
       <Menu.Item key="3" icon={<VideoCameraOutlined />}>
