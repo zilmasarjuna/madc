@@ -1,0 +1,46 @@
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px ;
+  
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.btn-default {
+  font-family: 'Poppins-Regular';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  background: #098EDF;
+  color: #fff;
+  width: 100%;
+  background: #109CF1;
+  box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+  border-radius: 4px;
+}
+
+.btn-tertiary {
+  font-family: 'Poppins-Regular';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #098EDF;
+}
+
+.btn-delete-right {
+  float: right;
+  color: #F7685B;
+  padding: 0;
+  font-size: 1rem;
+  position: relative;
+}
