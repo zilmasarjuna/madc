@@ -23,8 +23,8 @@ const SiderMenu = ({ config }) => (
       <Menu.Item key="profile" icon={<UploadOutlined />}>
         Profil Penerbit
       </Menu.Item>
-      <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-        <Link to="/list-book">
+      <Menu.Item key="books" icon={<VideoCameraOutlined />}>
+        <Link to="/books">
           Daftar Buku
         </Link>
       </Menu.Item>

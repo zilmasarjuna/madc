@@ -1,8 +1,7 @@
 import React from 'react'
 
 import {
-  Select,
-  Form
+  Select, Form
 } from 'antd'
 
 const { Option } = Select

@@ -9,6 +9,8 @@ import Dashboard from 'containers/Dashboard'
 import JudgementList from 'containers/Judgement/List'
 import JudgementDetail from 'containers/Judgement/Detail'
 import RegisterPublisher from 'containers/Publisher/RegisterPublisher'
+import BookList from 'containers/Book/List'
+import BookCreate from 'containers/Book/Create'
 
 import PrivateComponent from 'containers/Layout/ProtectedRoute'
 import PublicComponent from 'containers/Layout/PublicRoute'
@@ -28,6 +30,8 @@ function App() {
             <PrivateComponent exact path="/judgement" component={JudgementList} menu="judgement" />
             <PrivateComponent exact path="/judgement/:id" component={JudgementDetail} menu="judgement" />
             <PrivateComponent exact path="/publisher/register" component={RegisterPublisher} menu="profile" /> 
+            <PrivateComponent exact path="/books" component={BookList} menu="books" />
+            <PrivateComponent exact path="/books/create" component={BookCreate} menu="books" />
 
             <Route path="*" component={NotFound} />
           </Switch>

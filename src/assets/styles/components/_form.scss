@@ -147,8 +147,6 @@
     position: absolute;
     bottom: -22px;
   }
-
-  
 }
 
 
@@ -161,5 +159,77 @@
     line-height: 19px;
     letter-spacing: 0.01em;
     color: #323C47;
+  }
+}
+
+.button-upload {
+  background: #109CF1;
+  box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+  border-radius: 4px;
+  padding: 5px 30px;
+  height: auto;
+  cursor: pointer;
+  font-family: 'Poppins-regular';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+.upload-form {
+  margin-bottom: 5px;
+
+  .ant-form-item-label {
+    padding: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .ant-form-item-label > label{
+    font-family: 'Poppins-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    color: #818E9B;
+    height: auto;
+    text-align: left;
+  }
+
+  .ant-upload {
+    font-family: 'Poppins-Regular';
+    font-style: normal;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    color: #109CF1;
+
+    &:focus {
+      outline: none!important;
+      box-shadow: none!important;
+      border: none!important;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  .ant-upload-select-picture-card {
+    width: 100%;
+  }
+  .ant-form-item-explain {
+    font-family: 'Poppins-Regular';
+    font-style: italic;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: #F7685B;
+    position: absolute;
+    bottom: -22px;
   }
 }

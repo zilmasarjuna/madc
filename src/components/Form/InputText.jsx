@@ -7,9 +7,8 @@ const InputText = (props) => {
     label,
     name,
     rules,
-    placeholder
+    placeholder,
   } = props 
-  
   return (
     <Form.Item
       {...props}
