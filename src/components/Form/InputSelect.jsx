@@ -10,7 +10,7 @@ const InputSelect = ({
   label,
   name,
   rules,
-  options,
+  options = [],
   placeholder
 }) => (
   <Form.Item
@@ -26,7 +26,7 @@ const InputSelect = ({
       dropdownClassName="dropdown-select-form"
     >
       {
-        options.map(key => <Option value={key.value}>{key.label}</Option>)
+        options.map(key => <Option value={key.value} key={Math.random()}>{key.label}</Option>)
       }
     </Select>
   </Form.Item>

@@ -19,7 +19,7 @@ const layout = {
   }
 }
 
-const FormPublisher = () => {
+const FormPublisher = ({ onSubmit }) => {
   const [form] = Form.useForm()
 
   return (
@@ -44,7 +44,7 @@ const FormPublisher = () => {
         surat_pernyataan: null
       }}
       onFinish={(val) => {
-        console.log(val)
+        onSubmit(val)
       }}
     >
       <Row gutter={20}>
@@ -54,7 +54,7 @@ const FormPublisher = () => {
             name="name"
             rules={[{
               required: true,
-              message: 'Please input your name' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Nama penerbit ..."
           />
@@ -63,7 +63,7 @@ const FormPublisher = () => {
             name="email"
             rules={[{
               required: true,
-              message: 'Please input your email' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Email ..."
           />
@@ -72,7 +72,7 @@ const FormPublisher = () => {
             name="phone"
             rules={[{
               required: true,
-              message: 'Please input your phone' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="No Handphone ..."
           />
@@ -83,7 +83,7 @@ const FormPublisher = () => {
                 name="province"
                 rules={[{
                   required: true,
-                  message: 'Please input your province' 
+                  message: 'Wajib diisi' 
                 }]}
                 options={[{ label: 'S', value: '2' }]}
                 placeholder="Provinsi..."
@@ -95,7 +95,7 @@ const FormPublisher = () => {
                 name="city"
                 rules={[{
                   required: true,
-                  message: 'Please input your province' 
+                  message: 'Wajib diisi' 
                 }]}
                 options={[{ label: 'S', value: '2' }, { label: '2', value: '4' }, { label: '3', value: '3' }]}
                 placeholder="City..."
@@ -108,7 +108,7 @@ const FormPublisher = () => {
             name="address"
             rules={[{
               required: true,
-              message: 'Please input your name' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Alamat lengkap ..."
           />
@@ -119,7 +119,7 @@ const FormPublisher = () => {
             name="director_name"
             rules={[{
               required: true,
-              message: 'Please input your email' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Nama Direktur ..."
           />
@@ -128,7 +128,7 @@ const FormPublisher = () => {
             name="director_phone"
             rules={[{
               required: true,
-              message: 'Please input your email' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="No. Handphone Direktur ..."
           />
@@ -137,7 +137,7 @@ const FormPublisher = () => {
             name="director_email"
             rules={[{
               required: true,
-              message: 'Please input your email' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Email Direktur ..."
           />
@@ -146,7 +146,7 @@ const FormPublisher = () => {
             name="head_office"
             rules={[{
               required: true,
-              message: 'Please input your name' 
+              message: 'Wajib diisi' 
             }]}
             placeholder="Alamat lengkap kantor ..."
           />
@@ -191,7 +191,7 @@ const FormPublisher = () => {
                                   fieldKey={[field.fieldKey, 'name']}
                                   rules={[{
                                     required: true,
-                                    message: 'Please input your email' 
+                                    message: 'Wajib diisi' 
                                   }]}
                                   placeholder="Email Direktur ..."
                                 />
@@ -204,7 +204,7 @@ const FormPublisher = () => {
                                   fieldKey={[field.fieldKey, 'phone']}
                                   rules={[{
                                     required: true,
-                                    message: 'Please input no handphone' 
+                                    message: 'Wajib diisi' 
                                   }]}
                                   placeholder="No. Handphone ..."
                                 />
@@ -217,7 +217,7 @@ const FormPublisher = () => {
                                   fieldKey={[field.fieldKey, 'email']}
                                   rules={[{
                                     required: true,
-                                    message: 'Please input email' 
+                                    message: 'Wajib diisi' 
                                   }]}
                                   placeholder="Email ..."
                                 />
@@ -230,7 +230,7 @@ const FormPublisher = () => {
                                   fieldKey={[field.fieldKey, 'title']}
                                   rules={[{
                                     required: true,
-                                    message: 'Please input jabatan' 
+                                    message: 'Wajib diisi' 
                                   }]}
                                   placeholder="Jabatan ..."
                                 />
@@ -244,7 +244,7 @@ const FormPublisher = () => {
                     <Col md={8}>
                       <button
                         type="button" 
-                        className="btn btn-default btn-xs"
+                        className="btn btn-default btn-xs mt-20"
                         onClick={() => {
                           add();
                         }}

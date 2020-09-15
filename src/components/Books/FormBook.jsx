@@ -8,6 +8,7 @@ import InputText from 'components/Form/InputText'
 import InputTextarea from 'components/Form/InputTextarea'
 import InputSelect from 'components/Form/InputSelect'
 import InputUpload from 'components/Form/InputUpload'
+import InputRadio from 'components/Form/InputRadio'
 
 const layout = {
   labelCol: {
@@ -18,7 +19,7 @@ const layout = {
   }
 }
 
-const FormBook = () => {
+const FormBook = ({ onSubmit }) => {
   const [form] = Form.useForm()
 
   return (
@@ -27,11 +28,11 @@ const FormBook = () => {
       {...layout}
       name="basic"
       onFinish={(val) => {
-        console.log(val)
+        onSubmit(val)
       }}
     >
-      <Row>
-        <Col md={24}>
+      <Row gutter={20}>
+        <Col md={12}>
           <InputText 
             label="Judul Buku"
             name="title"
@@ -153,10 +154,21 @@ const FormBook = () => {
             options={[{ label: 'S', value: '2' }]}
             placeholder="Warna Catatan Buku..."
           />
+          <InputRadio 
+            label="Buku Ini Pernah dilakukan Penilaian"
+            name="is_judged"
+            rules={[{
+              required: true,
+              message: 'Required' 
+            }]}
+            options={[{ label: 'Ya', value: '1' }, { label: 'Tidak', value: '0' }]}
+          />
+        </Col>
+        <Col md={12}>
           <Form.Item
-            className="mg-0"
-            shouldUpdate={(prevValues, currentValues) => prevValues.file_pdf_book !== currentValues.file_pdf_book}
-          >
+              className="mg-0"
+              shouldUpdate={(prevValues, currentValues) => prevValues.file_pdf_book !== currentValues.file_pdf_book}
+            >
             {({ getFieldValue }) => {
               return (
                 <InputUpload 
