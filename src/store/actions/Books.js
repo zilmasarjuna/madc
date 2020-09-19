@@ -15,9 +15,14 @@ function getFormData(object) {
 export const registerBooks = params => (
   (dispatch) => {
     dispatch(requestPost())
+    let paramsData = getFormData(params)
+    paramsData.set('aggreement_publisher', params.aggreement_publisher.file)
+    paramsData.set('agreement_writer', params.agreement_writer.file)
+    paramsData.set('file_pdf_book', params.file_pdf_book.file)
+    paramsData.set('file_pdf_book_no_identity', params.file_pdf_book_no_identity.file)
 
     const reqPromise = new Promise((resolve, reject) => {
-      axios.post('/books', getFormData(params)).then((response) => {
+      axios.post('/books', paramsData).then((response) => {
         if (response.data.meta.code === 200) {
           dispatch(requestPostSuccess())
 
