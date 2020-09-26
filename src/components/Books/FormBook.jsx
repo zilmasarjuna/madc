@@ -146,7 +146,7 @@ const FormBook = ({ onSubmit }) => {
           />
           <InputSelect
             label="Warna Catatan Buku"
-            name="color_book"
+            name="color"
             rules={[{
               required: true,
               message: 'Required' 

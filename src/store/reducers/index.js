@@ -7,6 +7,7 @@ import province from './Address/Province'
 import city from './Address/City'
 import classification from './OptionBook/Classification'
 import subject from './OptionBook/Subject'
+import bookList from './Book/List'
 
 export default combineReducers({
   config,
@@ -16,4 +17,5 @@ export default combineReducers({
   city,
   classification,
   subject,
+  bookList
 })

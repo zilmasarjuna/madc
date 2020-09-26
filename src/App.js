@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import history from 'utils/history'
 
 import Login from 'containers/Login'
+import ForgotPassword from 'containers/ForgotPassword'
+import ResetPassword from 'containers/ResetPassword'
+
+
 import Register from 'containers/Register'
 import Dashboard from 'containers/Dashboard'
 import JudgementList from 'containers/Judgement/List'
@@ -25,6 +29,8 @@ function App() {
           <Switch>
             <PublicComponent exact path="/" component={Login} />
             <PublicComponent exact path="/register" component={Register} />
+            <PublicComponent exact path="/forgot-password" component={ForgotPassword} />
+            <PublicComponent exact path="/reset-password/:id" component={ResetPassword} />
 
             <PrivateComponent exact path="/dashboard" component={Dashboard} menu="dashboard" />
             <PrivateComponent exact path="/judgement" component={JudgementList} menu="judgement" />

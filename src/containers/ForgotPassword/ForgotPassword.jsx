@@ -26,12 +26,12 @@ const buttonLayout = {
   }
 }
 
-const Login = ({ fetchLogin, history }) => (
+const ForgotPassword = ({ fetchLogin, history }) => (
   <RenderAnimation>
     <div className="container-auth">
       <div className="card-auth">
         <Card bordered={false} style={{ boxShadow: '0px 22px 106px rgba(0, 0, 0, 0.07)' }}>
-          <h4>Halaman Login</h4>
+          <h4>Masukan Email</h4>
           <Form
             {...layout}
             name='basic'
@@ -58,23 +58,6 @@ const Login = ({ fetchLogin, history }) => (
               />
             </Form.Item>
             <Form.Item
-              label="Password"
-              name="password"
-              required={false}
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!'
-                }
-              ]}
-            >
-              <Input.Password 
-                className="input-login"
-                placeholder="Password"
-              />
-            </Form.Item>
-
-            <Form.Item
               {...buttonLayout}
             >
               <Button type="primary" htmlType="submit">
@@ -84,8 +67,7 @@ const Login = ({ fetchLogin, history }) => (
           </Form>
 
           <div className="info-footer">
-            <Link to="/register">Buat akun baru ?</Link>
-            <Link to="/forgot-password">Lupa password?</Link>
+            <Link to="/">Login</Link>
           </div>
         </Card>
       </div>
@@ -96,4 +78,4 @@ const Login = ({ fetchLogin, history }) => (
 export default connect(
   null,
   { fetchLogin }
-)(Login)
+)(ForgotPassword)

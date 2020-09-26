@@ -1,85 +1,73 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { Table, Card, Row, Col } from 'antd'
+
+import { getBookList } from 'store/actions/Books'
 
 import { LayoutWrapper } from 'components'
 
 const columns = [
   {
     title: 'Kode',
-    dataIndex: 'kode',
+    dataIndex: 'book_code',
     key: 'kode',
-    render: text => <Link to={`/books/${text}`}><b>{text}</b></Link>,
+    render: text => text ? <Link to={`/books/${text}`}><b>{text}</b></Link> : '-',
   },
   {
     title: 'Judul',
     dataIndex: 'title',
     key: 'title',
+    render: text => text || '-'
   },
   {
-    title: 'Kategori',
-    dataIndex: 'category',
+    title: 'Penulis',
+    dataIndex: 'author',
     key: 'category',
+    render: text => text || '-'
+  }, 
+  {
+    title: 'Tahun Penerbitan',
+    dataIndex: 'publication_year',
+    key: 'category',
+    render: text => text || '-'
   }
 ];
 
-const data = [
-  {
-    key: '1',
-    kode: 'BJ002',
-    title: 'Judul buku',
-    category: 'Paud',
-    result: 'Berhasil',
-  },
-  {
-    key: '2',
-    kode: 'BJ002',
-    title: 'Judul buku',
-    category: 'Paud',
-    result: 'Berhasil',
-  },
-  {
-    key: '3',
-    kode: 'BJ002',
-    title: 'Judul buku',
-    category: 'Paud',
-    result: 'Berhasil',
-  },
-  {
-    key: '4',
-    kode: 'BJ002',
-    title: 'Judul buku',
-    category: 'Paud',
-    result: 'Berhasil',
-  },
-];
-
-
-const List = ({ history }) => (
-  <LayoutWrapper>
-    <div className="body">
-      <Row>
-        <Col md={{ span: 4, offset: 20 }}>
-          <button
-            className="btn btn-default mb-20"
-            onClick={() => history.push('/books/create')}
-          >
-            Daftar Buku
-          </button>
-        </Col>
-      </Row>
-      <div className="content-table">
-        <Card bordered={false} className="card-bntp card-table">
-          <Table 
-            columns={columns} 
-            dataSource={data} 
-            pagination={false}
-          />
-        </Card>
+const List = ({ history, getBookList, bookList }) => {
+  React.useEffect(() => {
+    getBookList()
+  }, [])
+  return (
+    <LayoutWrapper>
+      <div className="body">
+        <Row>
+          <Col md={{ span: 4, offset: 20 }}>
+            <button
+              className="btn btn-default mb-20"
+              onClick={() => history.push('/books/create')}
+            >
+              Daftar Buku
+            </button>
+          </Col>
+        </Row>
+        <div className="content-table">
+          <Card bordered={false} className="card-bntp card-table">
+            <Table 
+              columns={columns} 
+              dataSource={bookList.data} 
+              loading={bookList.loading}
+              pagination={false}
+            />
+          </Card>
+        </div>
       </div>
-    </div>
-  </LayoutWrapper>
-)
+    </LayoutWrapper>
+  )
+}
 
-export default List
+export default connect(
+  ({ bntp: { bookList } }) => ({ bookList }),
+  { getBookList }
+)(List)
