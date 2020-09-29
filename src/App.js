@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import history from 'utils/history'
-
 import Login from 'containers/Login'
 import ForgotPassword from 'containers/ForgotPassword'
 import ResetPassword from 'containers/ResetPassword'

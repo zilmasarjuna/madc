@@ -6,12 +6,6 @@ import {
   requestPostFailure
 } from './Request'
 
-function getFormData(object) {
-  const formData = new FormData();
-  Object.keys(object).forEach(key => formData.append(key, object[key]));
-  return formData;
-}
-
 export const registerAccountPublisher = params => (
   (dispatch) => {
     dispatch(requestPost())

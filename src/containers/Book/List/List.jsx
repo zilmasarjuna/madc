@@ -38,7 +38,7 @@ const columns = [
 const List = ({ history, getBookList, bookList }) => {
   React.useEffect(() => {
     getBookList()
-  }, [])
+  }, []) //eslint-disable-line
   return (
     <LayoutWrapper>
       <div className="body">

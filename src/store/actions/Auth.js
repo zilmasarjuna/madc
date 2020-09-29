@@ -15,7 +15,6 @@ import {
 import {
   requestPost,
   requestPostSuccess,
-  requestPostFailure,
 } from './Request'
 
 export const authenticateUserRequest = () => ({
@@ -47,12 +46,13 @@ const removeToken = () => {
 
 export const loginUser = data => (
   (dispatch) => {
-    console.log('data', data)
     dispatch(authenticateUserSuccess(data))
 
-    // Cookies.set(config.store_app, token)
-    
-    window.location = '/dashboard'
+    if (data.Publisher.id !== 0) {
+      window.location = '/dashboard'
+    } else {
+      window.location = '/publisher/register'
+    }
   }
 )
 
@@ -62,17 +62,9 @@ export const registerUser = params => (
 
     const reqPromise = new Promise((resolve, reject) => {
       axios.post('/user/create/publisher', params).then((response) => {
-        if (response.data.meta.code === 200) {
-          dispatch(requestPostSuccess())
+        dispatch(requestPostSuccess())
 
-          resolve({ status: true })
-        } else {
-          dispatch(requestPostFailure())
-          resolve({
-            status: false,
-            message: response.data.meta.message,
-          })
-        }
+        resolve({ status: true })
       }).catch((e) => {
         reject({
           status: false,

@@ -5,7 +5,6 @@ import {
 } from 'antd'
 
 import InputText from 'components/Form/InputText'
-import InputTextarea from 'components/Form/InputTextarea'
 import InputSelect from 'components/Form/InputSelect'
 import InputUpload from 'components/Form/InputUpload'
 import InputRadio from 'components/Form/InputRadio'
