@@ -9,15 +9,15 @@ const PrivateComponent = ({ auth, changeMenu, component: Component, ...rest }) =
     changeMenu(rest.menu)
   })
   
-  if (!auth.isAuth) {
-    return (
-      <Redirect 
-        to={{
-          pathname: '/'
-        }}
-      />
-    )
-  } 
+  // if (!auth.isAuth) {
+  //   return (
+  //     <Redirect 
+  //       to={{
+  //         pathname: '/'
+  //       }}
+  //     />
+  //   )
+  // } 
 
   return (
     <Route 

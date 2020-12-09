@@ -1,7 +1,7 @@
 import {
-  CITY_REQUEST,
-  CITY_SUCCESS,
-  CITY_FAILURE,
+  PROVINCE_REQUEST,
+  PROVINCE_SUCCESS,
+  PROVINCE_FAILURE,
 } from 'store/types'
 
 const initialState = {
@@ -10,23 +10,30 @@ const initialState = {
   message: null,
 }
 
-export default function city(state = initialState, action) {
+export default function province(state = initialState, action) {
   switch(action.type) {
-    case CITY_REQUEST:
+    case PROVINCE_REQUEST:
       return {
         ...state,
         loading: true,
         message: null,
         data: []
       }
-    case CITY_SUCCESS:
+    case PROVINCE_SUCCESS:
+      const data = action.data.map(key => {
+        return {
+          label: key.name,
+          value: key.id
+        }
+      })
+
       return {
         ...state,
         loading: false,
-        data: action.data,
+        data: data,
         message: null,
       }
-    case CITY_FAILURE: 
+    case PROVINCE_FAILURE: 
       return {
         ...state,
         loading: false,

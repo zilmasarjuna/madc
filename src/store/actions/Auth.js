@@ -81,7 +81,7 @@ export const fetchLogin = (params) => {
   return (dispatch) => {
     dispatch(authenticateUserRequest())
 
-    return axios.post('/auth/login', params).then(res => {
+    return axios.post('/ogin', params).then(res => {
       const { data } = res
       dispatch(loginUser(data))
     }).catch(err => {

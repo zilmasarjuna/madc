@@ -16,6 +16,7 @@ const InputUpload = ({
   rules,
   beforeUpload,
   file,
+  normfile,
 }) => {
   return (
   <Form.Item

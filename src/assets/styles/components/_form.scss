@@ -92,11 +92,18 @@
   }
 }
 
+
+
 .select-form {
   margin-bottom: 13px;
 
   .ant-form-item-label {
     padding: 0;
+  }
+
+
+  .ant-select-single .ant-select-selector .ant-select-selection-search {
+    left: 0;
   }
 
   .ant-form-item-label > label{
@@ -135,6 +142,7 @@
       box-shadow: none!important;
       border: none!important;
     }
+
   }
   .ant-form-item-explain {
     font-family: 'Poppins-Regular';

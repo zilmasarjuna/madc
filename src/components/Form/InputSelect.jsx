@@ -11,7 +11,8 @@ const InputSelect = ({
   name,
   rules,
   options = [],
-  placeholder
+  placeholder,
+  onChangeSelect
 }) => (
   <Form.Item
     label={label}
@@ -24,6 +25,11 @@ const InputSelect = ({
       placeholder={placeholder}
       allowClear
       dropdownClassName="dropdown-select-form"
+      showSearch
+      onChange={onChangeSelect}
+      filterOption={(input, option) =>
+        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+      }
     >
       {
         options.map(key => <Option value={key.value} key={Math.random()}>{key.label}</Option>)

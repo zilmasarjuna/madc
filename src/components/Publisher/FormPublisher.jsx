@@ -1,8 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import {  
   Form, Row, Col,
 } from 'antd'
+
+import { getProvince, getCity } from 'store/actions/Address'
 
 import InputText from 'components/Form/InputText'
 import InputTextarea from 'components/Form/InputTextarea'
@@ -18,8 +21,34 @@ const layout = {
   }
 }
 
-const FormPublisher = ({ onSubmit }) => {
+
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+
+const FormPublisher = ({ onSubmit, province, city, getProvince, getCity }) => {
   const [form] = Form.useForm()
+  const [state, changeState] = React.useState({
+    valSuratPernyataan: '',
+    valKta: '',
+    valAkta: '',
+    valNpwp: '',
+    valSiup: ''
+  })
+
+  React.useEffect(() => {
+    getProvince()
+  }, [])
+
+  const onChangeProvince = (val) => {
+    getCity(val)
+  } 
 
   return (
     <Form
@@ -43,11 +72,15 @@ const FormPublisher = ({ onSubmit }) => {
         surat_pernyataan: null
       }}
       onFinish={(val) => {
-        onSubmit(val)
+        const params = {
+          ...val,
+          ...state,
+        }
+        onSubmit(params)
       }}
     >
       <Row gutter={20}>
-        <Col md={12}>
+        <Col md={12} xs={24}>
           <InputText 
             label="Nama Penerbit"
             name="name"
@@ -76,7 +109,7 @@ const FormPublisher = ({ onSubmit }) => {
             placeholder="No Handphone ..."
           />
           <Row gutter={10}>
-            <Col md={12}>
+            <Col md={12} xs={24}>
               <InputSelect
                 label="Province"
                 name="province"
@@ -84,11 +117,12 @@ const FormPublisher = ({ onSubmit }) => {
                   required: true,
                   message: 'Wajib diisi' 
                 }]}
-                options={[{ label: 'S', value: '2' }]}
+                options={province.data}
                 placeholder="Provinsi..."
+                onChangeSelect={onChangeProvince}
               />
             </Col>
-            <Col md={12}>
+            <Col md={12} xs={24}>
               <InputSelect
                 label="City"
                 name="city"
@@ -96,7 +130,7 @@ const FormPublisher = ({ onSubmit }) => {
                   required: true,
                   message: 'Wajib diisi' 
                 }]}
-                options={[{ label: 'S', value: '2' }, { label: '2', value: '4' }, { label: '3', value: '3' }]}
+                options= {city.data}
                 placeholder="City..."
               />
             </Col>
@@ -112,7 +146,7 @@ const FormPublisher = ({ onSubmit }) => {
             placeholder="Alamat lengkap ..."
           />
         </Col>
-        <Col md={12}>
+        <Col md={12} xs={24}>
           <InputText 
             label="Nama Direktur"
             name="director_name"
@@ -155,7 +189,7 @@ const FormPublisher = ({ onSubmit }) => {
         <Col md={24}><hr /></Col>
       </Row>
       <Row gutter={20}>
-        <Col md={12}>
+        <Col md={12} xs={24}>
           <Form.List name="pic">
             {
               (fields, {add, remove}) => {
@@ -167,10 +201,10 @@ const FormPublisher = ({ onSubmit }) => {
                           <Col md={24}>
                             <div className="title-row">
                               <Row>
-                                <Col md={12}>
+                                <Col md={12} xs={24}>
                                   <h3 className="title-card title-left">Person {id + 1}</h3>
                                 </Col>
-                                <Col md={12}>
+                                <Col md={12} xs={24}>
                                   <button 
                                     type="button" 
                                     className="btn btn-tertiary btn-delete-right"
@@ -182,7 +216,7 @@ const FormPublisher = ({ onSubmit }) => {
                               </Row>
                             </div>
                             <Row gutter={20}>
-                              <Col md={12}>
+                              <Col md={12} xs={24}>
                                 <InputText
                                   {...field}
                                   label="Nama"
@@ -195,7 +229,7 @@ const FormPublisher = ({ onSubmit }) => {
                                   placeholder="Email Direktur ..."
                                 />
                               </Col>
-                              <Col md={12}>
+                              <Col md={12} xs={24}>
                                 <InputText
                                   {...field}
                                   label="No. Handphone"
@@ -208,7 +242,7 @@ const FormPublisher = ({ onSubmit }) => {
                                   placeholder="No. Handphone ..."
                                 />
                               </Col>
-                              <Col md={12}>
+                              <Col md={12} xs={24}>
                                 <InputText
                                   {...field}
                                   label="Email"
@@ -221,7 +255,7 @@ const FormPublisher = ({ onSubmit }) => {
                                   placeholder="Email ..."
                                 />
                               </Col>
-                              <Col md={12}>
+                              <Col md={12} xs={24}>
                                 <InputText
                                   {...field}
                                   label="Jabatan"
@@ -257,19 +291,28 @@ const FormPublisher = ({ onSubmit }) => {
             }
           </Form.List>
         </Col>
-        <Col md={12}>
+        <Col md={12} xs={24}>
           <Row>
             <Col md={24}>
               <Form.Item
                 className="mg-0"
                 shouldUpdate={(prevValues, currentValues) => prevValues.surat_pernyataan !== currentValues.surat_pernyataan}
               >
-                {({ getFieldValue }) => {
+                {({ getFieldValue, setFieldsValue }) => {
                   return (
                     <InputUpload 
                       label="Surat Pernyataan dan Kebenaran"
                       name="surat_pernyataan"
-                      beforeUpload={() => false}
+                      beforeUpload={(e) => {
+                        getBase64(e).then(res => {
+                          changeState({
+                            ...state,
+                            valSuratPernyataan: res
+                          })
+                        })
+                        
+                        return false
+                      }}
                       file={getFieldValue('surat_pernyataan')}
                     />
                   )
@@ -286,7 +329,16 @@ const FormPublisher = ({ onSubmit }) => {
                     <InputUpload 
                       label="KTA"
                       name="kta"
-                      beforeUpload={() => false}
+                      beforeUpload={(e) => {
+                        getBase64(e).then(res => {
+                          changeState({
+                            ...state,
+                            valKta: res
+                          })
+                        })
+                        
+                        return false
+                      }}
                       file={getFieldValue('kta')}
                     />
                   )
@@ -303,7 +355,16 @@ const FormPublisher = ({ onSubmit }) => {
                     <InputUpload 
                       label="Akta"
                       name="akta"
-                      beforeUpload={() => false}
+                      beforeUpload={(e) => {
+                        getBase64(e).then(res => {
+                          changeState({
+                            ...state,
+                            valAkta: res
+                          })
+                        })
+                        
+                        return false
+                      }}
                       file={getFieldValue('akta')}
                     />
                   )
@@ -320,7 +381,16 @@ const FormPublisher = ({ onSubmit }) => {
                     <InputUpload 
                       label="NPWP"
                       name="npwp"
-                      beforeUpload={() => false}
+                      beforeUpload={(e) => {
+                        getBase64(e).then(res => {
+                          changeState({
+                            ...state,
+                            valNpwp: res
+                          })
+                        })
+                        
+                        return false
+                      }}
                       file={getFieldValue('npwp')}
                     />
                   )
@@ -337,7 +407,16 @@ const FormPublisher = ({ onSubmit }) => {
                     <InputUpload 
                       label="SIUP"
                       name="siup"
-                      beforeUpload={() => false}
+                      beforeUpload={(e) => {
+                        getBase64(e).then(res => {
+                          changeState({
+                            ...state,
+                            valSiup: res
+                          })
+                        })
+                        
+                        return false
+                      }}
                       file={getFieldValue('siup')}
                     />
                   )
@@ -360,4 +439,7 @@ const FormPublisher = ({ onSubmit }) => {
   )
 }
 
-export default FormPublisher
+export default connect(
+  ({ bntp: { province, city } }) => ({ province, city }),
+  { getProvince, getCity }
+)(FormPublisher)

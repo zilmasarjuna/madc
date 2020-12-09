@@ -7,12 +7,11 @@ import { LayoutWrapper, CardRegisterPublisher } from 'components'
 
 const RegisterPublisher = ({ auth }) => (
   <LayoutWrapper>
-
     <div className="body">
       <div className="content">
-        {
+        {/* {
           auth.data.Publisher.id === 0 && <Alert message="Anda belum memiliki profile penerbit. Silahkan isi terlebih dahulu" type="warning" />
-        }
+        } */}
         <CardRegisterPublisher />
       </div>
     </div>

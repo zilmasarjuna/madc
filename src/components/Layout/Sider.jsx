@@ -20,10 +20,17 @@ const SiderMenu = ({ config }) => (
           Dashboard
         </Link>  
       </Menu.Item>
-      <Menu.Item key="profile" icon={<UploadOutlined />}>
-        Profil Penerbit
+      <Menu.Item key="guest" icon={<UploadOutlined />}>
+        <Link to="/guest">
+          Daftar Tamu
+        </Link>
       </Menu.Item>
-      <Menu.Item key="books" icon={<VideoCameraOutlined />}>
+      <Menu.Item key="users" icon={<UploadOutlined />}>
+        <Link to="/users">
+          Pengguna
+        </Link>
+      </Menu.Item>
+      {/* <Menu.Item key="books" icon={<VideoCameraOutlined />}>
         <Link to="/books">
           Daftar Buku
         </Link>
@@ -32,7 +39,7 @@ const SiderMenu = ({ config }) => (
         <Link to="/judgement">
           Hasil Penilaian
         </Link>
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   </Sider>
 )

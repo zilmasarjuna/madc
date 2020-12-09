@@ -10,6 +10,8 @@ import {
 } from 'antd'
 
 import { RenderAnimation } from 'components'
+
+import Logo from 'assets/img/logo.svg';
  
 const layout = {
   labelCol: {
@@ -29,7 +31,11 @@ const buttonLayout = {
 const Login = ({ fetchLogin, history }) => (
   <RenderAnimation>
     <div className="container-auth">
+      
       <div className="card-auth">
+        <div className="logo">
+          <img src={Logo} alt="logo" />
+        </div>
         <Card bordered={false} style={{ boxShadow: '0px 22px 106px rgba(0, 0, 0, 0.07)' }}>
           <h4>Halaman Login</h4>
           <Form
@@ -58,7 +64,7 @@ const Login = ({ fetchLogin, history }) => (
               />
             </Form.Item>
             <Form.Item
-              label="Password"
+              label="Kata sandi"
               name="password"
               required={false}
               rules={[
@@ -83,10 +89,10 @@ const Login = ({ fetchLogin, history }) => (
             </Form.Item>
           </Form>
 
-          <div className="info-footer">
+          {/* <div className="info-footer">
             <Link to="/register">Buat akun baru ?</Link>
             <Link to="/forgot-password">Lupa password?</Link>
-          </div>
+          </div> */}
         </Card>
       </div>
     </div>

@@ -42,12 +42,8 @@ export const getProvince = () => (
     dispatch(provinceRequest())
 
     try {
-      const res = await axios.get('/province')
-      if (res.data.meta.code === 200) {
-        dispatch(res.data.data)
-      } else {
-        dispatch(provinceFailure(res.data.meta.message))
-      }
+      const res = await axios.get('/provinces')
+      dispatch(provinceSuccess(res.data))
     } catch (e) {
       dispatch(provinceFailure('Ada masalah dengan server.'))
     }
@@ -59,12 +55,8 @@ export const getCity = (province) => (
     dispatch(cityRequest())
 
     try {
-      const res = await axios.get(`/city/${province}`)
-      if (res.data.meta.code === 200) {
-        dispatch(res.data.data)
-      } else {
-        dispatch(cityFailure(res.data.meta.message))
-      }
+      const res = await axios.get(`/cities/${province}`)
+      dispatch(citySuccess(res.data.data))
     } catch (e) {
       dispatch(cityFailure('Ada masalah dengan server.'))
     }
